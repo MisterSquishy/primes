@@ -1,18 +1,20 @@
+import random
+
 def miller_rabin(n, k):
 
     # Implementation uses the Miller-Rabin Primality Test
     # The optimal number of rounds for this test is 40
     # See http://stackoverflow.com/questions/6325576/how-many-iterations-of-rabin-miller-should-i-use-for-cryptographic-safe-primes
     # for justification
-
-    # If number is even, it's a composite number
+    #
     #FORKED FROM https://gist.github.com/Ayrx/5884790
+
+    assert isinstance(n, int)
+    assert isinstance(k, int)
+    assert n > 2
 
     if n == 2:
         return True
-
-    if n % 2 == 0:
-        return False
 
     r, s = 0, n - 1
     while s % 2 == 0:
