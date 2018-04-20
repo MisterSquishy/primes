@@ -11,6 +11,7 @@ def main(n, k):
     # FORKED FROM https://gist.github.com/Ayrx/5884790
     #
     # Some hundred-digit primes for testing: https://primes.utm.edu/lists/small/small2.html
+    # Good large primes for factoring: https://asecuritysite.com/encryption/random3
 
 
     # validate input
