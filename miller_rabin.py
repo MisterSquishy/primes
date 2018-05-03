@@ -42,21 +42,11 @@ def is_probably_prime(n):
                 break
         else:
             return False
-    return True
-
-def print_percentage_bar(x, n):
-    percentage = (x/float(n))*100
-    sys.stdout.write("\r[")
-    for i in range(int(percentage)/2):
-        sys.stdout.write("=")
-    for i in range(50-(int(percentage)/2)):
-        sys.stdout.write(" ")
-    sys.stdout.write("] "+str(int(percentage))+"%")    
+    return True 
 
 def fact_in_range(n, range):
     primefact = 1
     for x in range:
-        print_percentage_bar(x, len(range)) #todo so this is way too slow
         if(is_probably_prime(long(x))):
             primefact *= x
     return fractions.gcd(n, primefact) > 1
@@ -64,14 +54,13 @@ def fact_in_range(n, range):
 def binary_search_factor(n):
     possibleFactors = xrange(5, long(math.ceil(mp.sqrt(n))))
     while len(possibleFactors) > 1:
-        print(possibleFactors)
-        lowerhalf = xrange(possibleFactors[0], possibleFactors[len(possibleFactors)/2])
+        lowerhalf = xrange(possibleFactors[0], possibleFactors[len(possibleFactors) / 2 - 1])
         if fact_in_range(n, lowerhalf):
             possibleFactors = lowerhalf
         else:
             possibleFactors = xrange(possibleFactors[len(possibleFactors) / 2], possibleFactors[len(possibleFactors) - 1])
-    return possibleFactors
+    return possibleFactors[0]
 
 if __name__ == "__main__":
-    n = 568911225001276501 #=178127899 * 3193835599
-    print(binary_search_factor(n))
+    #12853 * 63809
+    assert binary_search_factor(820137077) == 12853
